@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+    <div class="panel-heading" style="font-size:large">
+        Car List
+    </div>
+
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <td>
+                    <button type="button"
+                            class="btn btn-danger"
+                            ng-click="vm.toggleImage()">
+                        {{vm.showImage ? "Hide" : "Show"}} Image
+                    </button>
+                </td>
+                <td>Car</td>
+                <td>Code</td>
+                <td>Available</td>
+                <td>Price</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="car in vm.cars">
+                <td>
+                    <img ng-show="vm.showImage"
+                         ng-src="{{car.imageUrl}}"
+                         style="width: 50px;margin: 2px"
+                         title="{{car.carName}}"/>
+                </td>
+                <td>
+                    <a ui-sref="carDetail({carId: car.carId})">
+                        {{car.carName}}</a>
+                </td>
+                <td>{{car.carCode}}</td>
+                <td>{{car.releaseDate | date}}</td>
+                <td>{{car.price | currency}}</td>
+                <td>
+                    <a class="btn btn-info"
+                       ui-sref="carEdit.info({carId: car.carId})">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

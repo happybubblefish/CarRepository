@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading" style="font-size:large">
+        {{vm.title}}
+    </div>
+    <!--ui-sref-active
+    define CSS class to the element when the related element is active.
+    This will allow us to show which tab is active.-->
+    <div class="panel-body">
+        <div class="wizard">
+            <a ui-sref=".info"
+               ui-sref-active="active">
+                Basic Information
+            </a>
+            <a ui-sref=".price"
+               ui-sref-active="active">
+                Price Details
+            </a>
+            <a ui-sref=".tags"
+               ui-sref-active="active">
+                Search Tags
+            </a>
+        </div>
+
+        <div data-ui-view></div>
+    </div>
+</div>

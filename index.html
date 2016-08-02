@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BEST4YOU</title>
+
+    <!--Style sheets-->
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/app.css" rel="stylesheet"/>
+    <link href="css/toastr.css" rel="stylesheet"/>
+
+    <!--Library Scripts-->
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/angular.min.js"></script>
+    <!--<script src="http://code.angularjs.org/1.2.2/angular.js"></script>-->
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/angular-mocks.js"></script>
+    <script src="js/angular-ui-router.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.3.3.min.js"></script>
+    <script src="js/toastr.js"></script>
+    <script src="js/d3.js"></script>
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script src="js/angular-charts.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.11/d3.js"></script>-->
+    <!--<script src="https://rawgit.com/chinmaymk/angular-charts/bower/dist/angular-charts.min.js"></script>-->
+    <script src="js/angular-cookies.js"></script>
+    <script src="js/angular-route.js"></script>
+
+
+    <!--Application Script-->
+    <script src="app/app.js"></script>
+
+    <!--Car Services-->
+    <script src="common/services/common.services.js"></script>
+    <script src="common/services/carResource.js"></script>
+    <script src="common/services/carResourceMock.js"></script>
+    <script src="common/services/carService.js"></script>
+
+
+    <!--User Services-->
+    <script src="common/services/userResource.js"></script>
+    <script src="common/services/userResourceMock.js"></script>
+    <script src="common/services/sessionService.js"></script>
+
+    <!--Login Controller-->
+    <script src="app/login/loginCtrl.js"></script>
+
+    <!--Registration Controller-->
+    <script src="app/registration/registrationCtrl.js"></script>
+
+    <!--User Controller-->
+    <script src="app/users/userListCtrl.js"></script>
+    <script src="app/users/userEditCtrl.js"></script>
+
+    <!--Car Controllers-->
+    <script src="app/cars/carListCtrl.js"></script>
+    <script src="app/cars/carDetailCtrl.js"></script>
+    <script src="app/cars/carEditCtrl.js"></script>
+
+    <!--Price Contrllers-->
+    <script src="app/prices/priceAnalyticsCtrl.js"></script>
+
+    <!--Utilities Controllers-->
+    <script src="app/utilities/utilitiesCtrl.js"></script>
+    <script src="common/services/utilitiesService.js"></script>
+</head>
+<body ng-app = "carRepositoryManagement">
+<nav class="navbar navbar-inverse" ng-controller="MainCtrl">
+    <div class="container">
+        <a class="navbar-brand"
+            ui-sref="home">BEST4YOU Car Repository Management</a>
+        <div class="navbar-header">
+            <button type="button"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="carList">Car List</a></li>
+                <li><a ui-sref="carEdit.info({carId:0})"><i class="glyphicon glyphicon-plus"></i>Add Car</a></li>
+                <li><a ui-sref="priceAnalytics">Price Analytics</a></li>
+                <li><a ui-sref="userList">User List</a></li>
+                <li><a ui-sref="utilities.interestCaculator">Utilities</a></li>
+                <li ng-hide="isLoggedIn" ><a ui-sref="login" ng-click="login()">Login</a></li>
+                <li ng-show="isLoggedIn" ><a ui-sref="home" ng-click="logout()">Logout</a></li>
+                <li ng-hide="isLoggedIn"><a ui-sref="registration({userId:0})">Registration</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div data-ui-view></div>
+</div>
+</body>
+</html>

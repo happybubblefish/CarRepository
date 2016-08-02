@@ -1,0 +1,106 @@
+<form class="form-horizontal" name="carForm" novalidate>
+    <fieldset>
+        <legend>Basic Car Information</legend>
+        <div class="form-group"
+             ng-class="{'has-error':carForm.inputCarName.$invalid &&
+                                    carForm.inputCarName.$touched}">
+            <label class="col-md-2 control-label"
+                   for="inputCarName">Car Name</label>
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputCarName"
+                       name="inputCarName"
+                       type="text"
+                       placeholder="Car Name (required)"
+                       ng-model="vm.car.carName"
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="20"/>
+            </div>
+
+            <span class="help-block has-error">
+                  <span ng-show="carForm.inputCarName.$error.required">
+                      Car name is required.
+                  </span>
+                  <span ng-show="carForm.inputCarName.$error.minlength">
+                      Car name must be at least 4 characters in length.
+                  </span>
+                  <span ng-show="carForm.inputCarName.$error.maxlength">
+                      Car name cannot exceed 12 characters in length.
+                  </span>
+            </span>
+        </div>
+
+        <div class="form-group"
+             ng-class="{'has-error':carForm.inputCarCode.$invalid &&
+                                    carForm.inputCarCode.$touched}">
+            <label class="col-md-2 control-label" for="inputCarCode">Car Code</label>
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputCarCode"
+                       name="inputCarCode"
+                       ui-mask="AAA-**** (required)"
+                       ng-model="vm.car.carCode"
+                       required/>
+            </div>
+
+            <span class="help-block has-error"
+                  ng-show="carForm.inputCarCode.$invalid &&
+                           carForm.inputCarCode.$touched">
+                    Car code is required.
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputAvailabilityDate">Availability</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input class="form-control"
+                           id="inputAvailabilityDate"
+                           type="text"
+                           uib-datepicker-popup="MMM dd,yyyy"
+                           is-open="vm.opened"
+                           ng-model="vm.car.releaseDate"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"
+                                ng-click="vm.open($event)">
+                            <i class="glyphicon glyphicon-calendar"/>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputDescription">Description</label>
+            <div class="col-md-10">
+                <textarea class="form-control"
+                          id="inputDescription"
+                          placeholder="Description"
+                          rows="3"
+                          ng-model="vm.car.description"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <!--if the state of form is invalid, save button will be disabled-->
+                    <button class="btn btn-warning"
+                            style="width:80px;margin-right:10px"
+                            ng-click="vm.submit(carForm.$valid)">
+                        Save
+                    </button>
+                </span>
+                <span>
+                    <button class="btn btn-default"
+                            style="width:70px"
+                            ng-click="vm.cancel()">
+                        Cancel
+                    </button>
+                </span>
+            </div>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+    <div class="panel-heading" style="font-size:large">
+        User list
+    </div>
+
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Gender</td>
+                    <td>DOB</td>
+                    <td>Roles</td>
+                    <td>Operations</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in vm.users">
+                    <td>{{user.userId}}</td>
+                    <td>{{user.firstName}} {{user.lastName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.DOB | date}}</td>
+                    <td>{{user.roles.join(', ')}}</td>
+                    <td>
+                        <a class="btn btn-primary"
+                           ui-sref="userEidt({userId: user.userId})">
+                            Edit
+                        </a>
+                        <a class="btn btn-danger"
+                           ui-sref="userDelete({userId: user.userId})">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
